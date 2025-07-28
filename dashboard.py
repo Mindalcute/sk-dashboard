@@ -4,14 +4,25 @@ import pandas as pd
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-# 현재 스크립트가 있는 디렉토리 가져오기
-script_dir = os.path.dirname(os.path.abspath(__file__))
-json_path = os.path.join(script_dir, "google_api_key.json")
+# Streamlit Cloud용 인증 설정
+@st.cache_resource
+def init_connection():
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    
+    # 로컬에서 실행할 때
+    if os.path.exists("google_api_key.json"):
+        creds = ServiceAccountCredentials.from_json_keyfile_name("google_api_key.json", scope)
+    # Streamlit Cloud에서 실행할 때
+    else:
+        creds = ServiceAccountCredentials.from_json_keyfile_dict(
+            st.secrets["connections"]["gcp_service_account"], 
+            scope
+        )
+    
+    return gspread.authorize(creds)
 
-# Google Sheet 인증 설정
-scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name(json_path, scope)
-client = gspread.authorize(creds)
+# Google Sheets 연결
+client = init_connection()
 
 try:
     # Google Sheet 열기
