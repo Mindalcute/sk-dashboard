@@ -10,6 +10,7 @@
 
 -----------------
 사용한 api : Google Sheets API
+
 Streamlit + gspread로 Google Sheets에서 데이터 읽기/쓰기는 완전히 무료입니다.
 
 공식 답변 :
