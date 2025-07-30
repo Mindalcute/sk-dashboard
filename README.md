@@ -1,3 +1,9 @@
+구글시트와 streamlit  연동, 
+구글시트에 정보 업데이트하면 대시보드로 볼 수 있음
+새로고침 버튼 추가 O
+날짜 형식 정확하게 맞춰야 오류 안 납니다!
+
+-----------------
 사용한 api : Google Sheets API
 Streamlit + gspread로 Google Sheets에서 데이터 읽기/쓰기는 완전히 무료입니다.
 
