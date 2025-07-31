@@ -1,3 +1,7 @@
+https://sk-dashboard-dz6cqwhedndwxokkzzzqnq.streamlit.app/
+
+여기로 접속하면 됩니다
+
 기능 : 구글시트와 streamlit  연동,
 구글시트에 정보 업데이트하면 대시보드로 볼 수 있음
 
